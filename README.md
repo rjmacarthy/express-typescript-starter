@@ -10,6 +10,7 @@ Clone the repository
 ```
 npm install 
 typings install
+node index.js
 ```
 
 Browse to http://localhost:3000

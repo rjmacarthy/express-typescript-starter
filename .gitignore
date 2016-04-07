@@ -6,3 +6,4 @@ npm-debug.log
 *.tmp.txt
 *.cache
 typings
+bin

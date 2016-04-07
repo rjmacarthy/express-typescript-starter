@@ -1,0 +1,12 @@
+'use strict';
+var http = require('http');
+var config = require('../config/config');
+var app = require('../config/express')();
+var server = http.createServer(app);
+server.listen(config.port);
+server.on('error', function () {
+    console.log('error starting server');
+});
+server.on('listening', function () {
+    console.log('started on port ' + config.port);
+});

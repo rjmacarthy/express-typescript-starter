@@ -12,10 +12,10 @@ const server: http.Server = http.createServer(app);
 
 server.listen(config.port);
 
-server.on("error", () => {
-  console.log("error starting server");
+server.on("error", (e : Error) => {
+  console.log("Error starting server" + e);
 });
 
 server.on("listening", () => {
-  console.log("started on port " + config.port);
+  console.log("Server started on port " + config.port);
 });

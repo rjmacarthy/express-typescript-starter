@@ -1,5 +1,3 @@
-/// <reference path="../../typings/main.d.ts" />
-
 import { sync } from "glob";
 import { union } from "lodash";
 

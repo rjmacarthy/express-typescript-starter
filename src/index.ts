@@ -1,6 +1,3 @@
-"use strict";
-/// <reference path="../typings/main.d.ts" />
-
 import * as http from "http";
 import config from "./config/config";
 

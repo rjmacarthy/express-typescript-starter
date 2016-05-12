@@ -1,5 +1,3 @@
-"use strict";
-/// <reference path="../../typings/main.d.ts" />
 import * as express from "express";
 import IndexController from "../controllers/index.server.controller";
 

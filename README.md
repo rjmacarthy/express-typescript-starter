@@ -30,9 +30,9 @@ Wow, it works!
     │   ├── controllers        # Controller files
     │   ├── views              # Jade files
     │   ├── routes             # Routes folder
-	│   ├── config             # configuration folder
+	│   ├── config             # Configuration folder
 	│   ├───├── express.ts     # Express configuration
-	│	├───├── config.ts      # Application configuration in config.js (port etc)
+	│   ├───├── config.ts      # Application configuration in config.js (port etc)
 	index.js                   # Requires ./src with ts-node module
 
 # License

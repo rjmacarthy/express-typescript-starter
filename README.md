@@ -43,9 +43,9 @@ Wow, it works!
 	│   ├───├── config.ts      # Application configuration in config.js (port etc)
 	index.js                   # Requires ./src with ts-node module
 
-#tsc
+# Typescript
 
-tsc will output the compiled code to the `dist` folder.
+Typescript will output the compiled code to the `dist` folder.
 
 # License
 

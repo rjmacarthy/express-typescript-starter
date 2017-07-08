@@ -9,8 +9,16 @@ Clone the repository
 
 ```
 npm install 
-typings install
-node index.js
+```
+
+For development:
+```
+npm run start
+```
+
+To serve:
+```
+npm run serve
 ```
 
 Browse to http://localhost:3000
@@ -34,6 +42,10 @@ Wow, it works!
 	│   ├───├── express.ts     # Express configuration
 	│   ├───├── config.ts      # Application configuration in config.js (port etc)
 	index.js                   # Requires ./src with ts-node module
+
+#tsc
+
+tsc will output the compiled code to the `dist` folder.
 
 # License
 

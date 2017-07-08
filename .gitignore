@@ -4,5 +4,6 @@ npm-debug.log
 .sublime-grunt-cache
 *.tmp.txt
 *.cache
+dist
 typings
 bin

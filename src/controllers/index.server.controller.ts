@@ -1,7 +1,7 @@
-import * as express from "express";
+import { Request, Response } from "express";
 
 export default class IndexController {
-    public static read(req: express.Request, res: express.Response, next: Function): void {
+    public static read(req: Request, res: Response, next: Function): void {
         res.render("index", { title: "Express" });
     }
 }

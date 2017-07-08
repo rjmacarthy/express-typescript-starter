@@ -31,17 +31,22 @@ Wow, it works!
 
 # Folder structure
 
-    .
-    ├── src                    # Main project files
-    │   ├── index.ts           # Required from ../index.js with ts-node
-    │   ├── public             # Assets folder
-    │   ├── controllers        # Controller files
-    │   ├── views              # Jade files
-    │   ├── routes             # Routes folder
-	│   ├── config             # Configuration folder
-	│   ├───├── express.ts     # Express configuration
-	│   ├───├── config.ts      # Application configuration in config.js (port etc)
-	index.js                   # Requires ./src with ts-node module
+    ├── config
+    │   ├── config.ts
+    │   └── express.ts
+    ├── controllers
+    │   └── index.server.controller.ts
+    ├── index.ts
+    ├── public
+    │   └── stylesheets
+    │       └── style.css
+    ├── routes
+    │   └── index.server.route.ts
+    ├── tsconfig.json
+    └── views
+        ├── error.jade
+        ├── index.jade
+        └── layout.jade
 
 # Typescript
 

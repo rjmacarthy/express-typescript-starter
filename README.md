@@ -13,7 +13,7 @@ npm install
 
 For development:
 ```
-npm run start
+npm run dev
 ```
 
 To serve:

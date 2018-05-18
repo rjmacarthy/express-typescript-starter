@@ -28,9 +28,18 @@ npm run debug
 
 Then run the `launch.json` configuration or inside visual studio code.  You should now be able to set breakpoints in your typescript.
 
+Test
+```
+npm run test
+```
+
+Test Watch
+```
+npm run test:watch
+```
+
 Browse to http://localhost:3000
 
-Wow, it works!
 
 # Start in watch mode
 

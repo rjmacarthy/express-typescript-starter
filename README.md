@@ -21,6 +21,13 @@ To serve:
 npm run serve
 ```
 
+To debug in visual studio code:
+```
+npm run debug
+```
+
+Then run the `launch.json` configuration or inside visual studio code.  You should now be able to set breakpoints in your typescript.
+
 Browse to http://localhost:3000
 
 Wow, it works!

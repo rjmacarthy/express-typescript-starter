@@ -68,6 +68,14 @@ Browse to http://localhost:3000
 
 Typescript will output the compiled code to the `dist` folder.
 
+# Docker
+
+Build the image `sudo docker build -t rjmacarthy/express-typescript-starter .`
+
+Run the image `sudo docker run -p 8080:3000 -d rjmacarthy/express-typescript-starter`
+
+Open `http://localhost:8080`
+
 # License
 
 MIT - Do with as you like.

@@ -7,7 +7,6 @@ import config from "../src/config/config";
 var mongoose = require('mongoose');
 
 describe("Model Spec", function () {
-    let res: mocks.MockResponse<any>;
     let connectionString = config.mongodb;
 
     beforeEach(() => {

@@ -4,5 +4,13 @@ services:
     build: .
     ports:
      - "8080:3000"
+    environment:
+      NODE_ENV : docker
     volumes:
      - .:/usr/src/app
+    depends_on:
+    - mongo
+  mongo:
+    image: mongo
+    ports:
+    - "27017:27017"

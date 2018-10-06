@@ -81,9 +81,18 @@ Typescript will output the compiled code to the `dist` folder.
 
 Build the image `sudo docker build -t rjmacarthy/express-typescript-starter .`
 
-Run the image `sudo docker run -p 8080:3000 -d rjmacarthy/express-typescript-starter`
+Run the image `docker-compose up`
 
 Open `http://localhost:8080`
+
+```
+# Removes all other docker images and containers #
+
+docker rmi $(docker images -q)
+docker rm $(docker ps -a -q)
+```
+
+
 
 # License
 

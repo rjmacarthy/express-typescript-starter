@@ -9,7 +9,9 @@
     "test:watch": "mocha -r ts-node/register -w ./spec/**/*.spec.ts --watch-extensions ts",
     "test": "mocha -r ts-node/register -w ./spec/**/*.spec.ts",
     "build": "tsc -p src",
-    "start" : "node dist/index.js"
+    "start" : "node dist/index.js",
+    "build:docker" : "docker build -t rjmacarthy/express-typescript-starter .",
+    "docker:compose" : "docker-compose up"
   },
   "dependencies": {
     "@types/express": "^4.0.36",

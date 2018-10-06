@@ -47,22 +47,29 @@ Browse to http://localhost:3000
 
 # Folder structure
 
-    ├── config
-    │   ├── config.ts
-    │   └── express.ts
-    ├── controllers
-    │   └── index.server.controller.ts
-    ├── index.ts
-    ├── public
-    │   └── stylesheets
-    │       └── style.css
-    ├── routes
-    │   └── index.server.route.ts
-    ├── tsconfig.json
-    └── views
-        ├── error.jade
-        ├── index.jade
-        └── layout.jade
+|-- Dockerfile
+|-- README.md
+|-- package.json
+|-- spec
+|   `-- index.spec.ts
+|-- src
+|   |-- config
+|   |   |-- config.ts
+|   |   `-- express.ts
+|   |-- controllers
+|   |   `-- index.server.controller.ts
+|   |-- index.ts
+|   |-- public
+|   |   `-- stylesheets
+|   |       `-- style.css
+|   |-- routes
+|   |   `-- index.server.route.ts
+|   |-- tsconfig.json
+|   `-- views
+|       |-- error.jade
+|       |-- index.jade
+|       `-- layout.jade
+`-- tsconfig.json
 
 # Typescript
 

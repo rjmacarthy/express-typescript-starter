@@ -7,7 +7,9 @@
     "serve": "concurrently --kill-others \"tsc -p src\" \"node dist/index.js\"",
     "debug": "concurrently --kill-others \"tsc -w -p src\" \"nodemon --inspect dist/index.js\"",
     "test:watch": "mocha -r ts-node/register -w ./spec/**/*.spec.ts --watch-extensions ts",
-    "test": "mocha -r ts-node/register -w ./spec/**/*.spec.ts"
+    "test": "mocha -r ts-node/register -w ./spec/**/*.spec.ts",
+    "build": "tsc -p src",
+    "start" : "node dist/index.js"
   },
   "dependencies": {
     "@types/express": "^4.0.36",

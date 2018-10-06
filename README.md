@@ -66,7 +66,7 @@ Browse to http://localhost:3000
 |   |-- routes
 |   |   -- index.server.route.ts
 |   |-- tsconfig.json
-|   `-- views
+|   -- views
 |       |-- error.jade
 |       |-- index.jade
 |       -- layout.jade

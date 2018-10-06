@@ -55,7 +55,7 @@ Browse to http://localhost:3000
 |   -- index.spec.ts
 |-- src
 |   |-- config
-|   |   |-- config.ts
+|   |   -- config.ts
 |   |   -- express.ts
 |   |-- controllers
 |   |   -- index.server.controller.ts
@@ -67,8 +67,8 @@ Browse to http://localhost:3000
 |   |   -- index.server.route.ts
 |   |-- tsconfig.json
 |   -- views
-|       |-- error.jade
-|       |-- index.jade
+|       -- error.jade
+|       -- index.jade
 |       -- layout.jade
 -- tsconfig.json
 ```

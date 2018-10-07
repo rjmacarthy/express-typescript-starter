@@ -14,9 +14,11 @@ export default function (db) {
         require(path.resolve(model));
     }
 
-    mongoose.connect(config.mongodb, {
-        promiseLibrary: global.Promise
-    });
+    if (config.useMongo) {
+        mongoose.connect(config.mongodb, {
+            promiseLibrary: global.Promise
+        }).catch(() => { console.log("Error connecting to mongos"); });
+    }
 
     // view engine setup
     app.set("views", path.join(__dirname, "../../src/views"));

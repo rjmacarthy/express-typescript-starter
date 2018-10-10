@@ -9,9 +9,9 @@
     "test:watch": "mocha -r ts-node/register -w ./spec/**/*.spec.ts --watch-extensions ts",
     "test": "mocha -r ts-node/register -w ./spec/**/*.spec.ts",
     "build": "tsc -p src",
-    "start" : "node dist/index.js",
-    "build:docker" : "docker build -t rjmacarthy/express-typescript-starter .",
-    "docker:compose" : "docker-compose up"
+    "start": "node dist/index.js",
+    "build:docker": "docker build -t rjmacarthy/express-typescript-starter .",
+    "docker:compose": "docker-compose up"
   },
   "dependencies": {
     "@types/express": "^4.0.36",
@@ -30,6 +30,7 @@
     "lodash": "^4.17.11",
     "mongoose": "^4.11.1",
     "morgan": "^1.6.1",
+    "negotiator": "^0.6.1",
     "nodemon": "^1.17.4",
     "passport": "^0.3.2",
     "q": "^1.4.1",

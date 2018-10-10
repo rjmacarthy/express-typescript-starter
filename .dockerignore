@@ -5,7 +5,7 @@ Dockerfile
 README.md
 env.*
 /devops/*
-
+node_modules
 # To prevent storing dev/temporary container data
 *.csv
 /tmp/*

@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { Example } from '../models/example.model';
 
 export default class IndexController {
     public index(req: Request, res: Response, next: Function): void {

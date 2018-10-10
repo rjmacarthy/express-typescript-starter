@@ -19,13 +19,6 @@ describe("Model Spec", function () {
         });
     });
 
-    it('Can create a new model', () => {
-        var example = new Example();
-        assert.isNotNull(example._id);
-        assert.isNotNull(example.save);
-        example.save
-    });
-
     it('Can save a new model', async () => {
         var example = new Example();
         example.name = 'test';

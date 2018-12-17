@@ -38,6 +38,11 @@ Test Watch
 npm run test:watch
 ```
 
+Build to `./dist`
+```
+npm run build
+```
+
 Browse to http://localhost:3000
 
 

@@ -14,8 +14,9 @@ describe("Model Spec", function () {
     });
 
     before(() => {
+        mongoose.Promise = global.Promise;
         mongoose.connect(connectionString, {
-            promiseLibrary: global.Promise
+            useMongoClient : true
         });
     });
 

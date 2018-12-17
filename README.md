@@ -26,7 +26,7 @@ To debug in visual studio code:
 npm run debug
 ```
 
-Then run the `launch.json` configuration or inside visual studio code.  You should now be able to set breakpoints in your typescript.
+Then run the `launch.json` configuration inside visual studio code `f5`.  You should now be able to set breakpoints in your typescript.
 
 Test
 ```
@@ -73,10 +73,6 @@ Browse to http://localhost:3000
 |       -- layout.jade
 -- tsconfig.json
 ```
-
-# Typescript
-
-Typescript will output the compiled code to the `dist` folder.
 
 # Docker
 

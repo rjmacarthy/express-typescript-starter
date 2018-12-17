@@ -41,10 +41,6 @@ npm run test:watch
 Browse to http://localhost:3000
 
 
-# Start in watch mode
-
-`npm run nodemon`
-
 # Folder structure
 
 ```
@@ -84,14 +80,6 @@ Build the image `sudo docker build -t rjmacarthy/express-typescript-starter .`
 Run the image `docker-compose up`
 
 Open `http://localhost:8080`
-
-```
-# Removes all other docker images and containers #
-
-docker rmi $(docker images -q)
-docker rm $(docker ps -a -q)
-```
-
 
 
 # License

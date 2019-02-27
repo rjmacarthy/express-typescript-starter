@@ -3,6 +3,8 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    script(src="//localhost:35729/livereload.js")
+    script(src="/socket.io/socket.io.js")
+    script.
+      var socket = io();
   body
     block content

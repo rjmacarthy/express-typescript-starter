@@ -12,7 +12,9 @@
     "build:docker": "docker build -t rjmacarthy/express-typescript-starter .",
     "docker:compose": "docker-compose up",
     "format": "prettier --write 'src/**/*ts'",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'"
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "lint:test": "tslint -c tslint.json 'spec/**/*.ts'",
+    "format:test": "prettier --write 'spec/**/*ts'"
   },
   "dependencies": {
     "body-parser": "^1.13.3",

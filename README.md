@@ -16,9 +16,9 @@ For development:
 npm run dev
 ```
 
-To serve:
+To start:
 ```
-npm run serve
+npm run start
 ```
 
 To debug in visual studio code:

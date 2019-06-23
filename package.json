@@ -11,7 +11,9 @@
     "build": "tsc -p src",
     "start": "node dist/index.js",
     "build:docker": "docker build -t rjmacarthy/express-typescript-starter .",
-    "docker:compose": "docker-compose up"
+    "docker:compose": "docker-compose up",
+    "format": "prettier --write 'src/**/*ts'",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
   "dependencies": {
     "body-parser": "^1.13.3",
@@ -27,7 +29,8 @@
     "negotiator": "^0.6.1",
     "pug": "^2.0.3",
     "serve-favicon": "~2.3.0",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.2.0",
+    "tslint-config-prettier": "^1.18.0"
   },
   "devDependencies": {
     "@types/chai": "^4.1.3",
@@ -44,8 +47,10 @@
     "mocha": "^5.1.1",
     "node-mocks-http": "^1.7.0",
     "nodemon": "^1.17.4",
+    "prettier": "^1.18.2",
     "sinon": "^5.0.7",
     "ts-node": "^6.0.3",
+    "tslint": "^5.18.0",
     "typescript": "^2.4.1"
   }
 }

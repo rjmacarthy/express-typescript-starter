@@ -16,7 +16,7 @@ export default function () {
     if (config.useMongo) {
         mongoose.connect(config.mongodb, {
             promiseLibrary: global.Promise
-        }).catch(() => { console.log('Error connecting to mongos'); });
+        }).catch(() => { console.log('Error connecting to mongo'); });
     }
 
     app.set('views', path.join(__dirname, '../../src/views'));

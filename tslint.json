@@ -29,7 +29,11 @@
       "no-require-imports": true,
       "no-string-literal": true,
       "no-switch-case-fall-through": true,
-      "trailing-comma": false,
+      "trailing-comma": {
+        "options": {
+          "multiline": "always"
+        }
+      },
       "no-trailing-whitespace": true,
       "no-unused-expression": true,
       "no-var-keyword": true,

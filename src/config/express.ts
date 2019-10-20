@@ -37,12 +37,5 @@ export default function() {
     require(path.resolve(route)).default(app)
   }
 
-  app.use(
-    (req: express.Request, res: express.Response, next: Function): void => {
-      const err: Error = new Error('Not Found')
-      next(err)
-    },
-  )
-
   return app
 }

@@ -13,7 +13,7 @@ export default function() {
     require(path.resolve(model))
   }
 
-  if (config.useMongo) {
+  if (config.db) {
     mongoose
       .connect(config.mongodb, {
         promiseLibrary: global.Promise,

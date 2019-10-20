@@ -16,7 +16,7 @@ server.on('error', (e: Error) => {
 })
 
 server.on('listening', () => {
-  if (config.useMongo) {
+  if (config.db) {
     console.log(
       `Server started on port ${config.port} on env ${process.env.NODE_ENV ||
         'dev'} dbcon ${config.mongodb}`,

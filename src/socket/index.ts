@@ -10,17 +10,17 @@ export class Socket {
   }
 
   public connect() {
-    this.io.on('connection', (s: socket.Socket) => {
+    this.io.on('connection', (socket: socket.Socket) => {
       // tslint:disable-next-line: no-console
-      console.info(` connected : ${s.id}`)
-      this.handlers(s)
+      console.info(` connected : ${socket.id}`)
+      this.handlers(socket)
     })
   }
 
-  public handlers(s: socket.Socket) {
-    s.on('disconnect', () => {
+  public handlers(socket: socket.Socket) {
+    socket.on('disconnect', () => {
       // tslint:disable-next-line: no-console
-      console.info(`Socket disconnected : ${s.id}`)
+      console.info(`Socket disconnected : ${socket.id}`)
     })
   }
 }

@@ -4,18 +4,20 @@ import * as express from 'express'
 import * as mongoose from 'mongoose'
 import * as logger from 'morgan'
 import * as path from 'path'
-import config from './config'
+
+import { DB_CONNECTION_STRING, ROUTES_DIR, MODELS_DIR, USE_DB } from '../var/config'
+import { globFiles } from '../helpers'
 
 export default function() {
   const app: express.Express = express()
 
-  for (const model of config.globFiles(config.models)) {
+  for (const model of globFiles(MODELS_DIR)) {
     require(path.resolve(model))
   }
 
-  if (config.db) {
+  if (USE_DB) {
     mongoose
-      .connect(config.mongodb, {
+      .connect(DB_CONNECTION_STRING, {
         promiseLibrary: global.Promise,
         useMongoClient: true,
       })
@@ -33,7 +35,7 @@ export default function() {
   app.use(cookieParser())
   app.use(express.static(path.join(__dirname, '../../src/public')))
 
-  for (const route of config.globFiles(config.routes)) {
+  for (const route of globFiles(ROUTES_DIR)) {
     require(path.resolve(route)).default(app)
   }
 

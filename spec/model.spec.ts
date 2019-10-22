@@ -1,14 +1,12 @@
-import * as sinon from 'sinon'
-import { expect, assert } from 'chai'
-import * as mocks from 'node-mocks-http'
+import { assert } from 'chai'
 import { Example } from '../src/models/example.model'
 import { after } from 'mocha'
-import config from '../src/config/config'
+import { DB_CONNECTION_STRING } from '../src/var/config'
 // tslint:disable-next-line: no-require-imports
 const mongoose = require('mongoose')
 
 describe('Model Spec', function() {
-  let connectionString = config.mongodb
+  let connectionString = DB_CONNECTION_STRING
 
   beforeEach(() => {
     delete mongoose.connection.models.Example

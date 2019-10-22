@@ -49,29 +49,31 @@ Browse to http://localhost:3000
 # Folder structure
 
 ```
-|-- Dockerfile 
-|-- README.md 
-|-- package.json
-|-- spec
-|   -- index.spec.ts
-|-- src
-|   |-- config
-|   |   -- config.ts
-|   |   -- express.ts
-|   |-- controllers
-|   |   -- index.server.controller.ts
-|   |-- index.ts
-|   |-- public
-|   |   -- stylesheets
-|   |       -- style.css
-|   |-- routes
-|   |   -- index.server.route.ts
-|   |-- tsconfig.json
-|   -- views
-|       -- error.jade
-|       -- index.jade
-|       -- layout.jade
--- tsconfig.json
+src/
+├── controllers
+│   └── index.server.controller.ts
+├── helpers
+│   └── index.ts
+├── index.ts
+├── models
+│   └── example.model.ts
+├── public
+│   ├── favicon.ico
+│   └── stylesheets
+│       └── style.css
+├── routes
+│   └── index.server.route.ts
+├── server
+│   └── index.ts
+├── socket
+│   └── index.ts
+├── tsconfig.json
+├── var
+│   └── config.ts
+└── views
+    ├── error.pug
+    ├── index.pug
+    └── layout.pug
 ```
 
 # Docker
@@ -85,5 +87,5 @@ Open `http://localhost:8080`
 
 # License
 
-MIT - Do with as you like.
+MIT
 

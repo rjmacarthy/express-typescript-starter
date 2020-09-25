@@ -25,6 +25,7 @@
     "fresh": "^0.5.2",
     "glob": "^5.0.14",
     "lodash": "^4.17.20",
+    "minimist": "^1.2.5",
     "mongoose": "^5.10.7",
     "morgan": "^1.6.1",
     "negotiator": "^0.6.1",

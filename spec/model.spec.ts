@@ -14,9 +14,7 @@ describe('Model Spec', function() {
 
   before(() => {
     mongoose.Promise = global.Promise
-    mongoose.connect(connectionString, {
-      useMongoClient: true,
-    })
+    mongoose.connect(connectionString)
   })
 
   it('Can save a new model', async () => {

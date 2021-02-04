@@ -3,7 +3,7 @@ import { DB_CONNECTION_STRING, PORT, USE_DB } from './var/config'
 import { Socket } from './socket/index'
 import app from './server'
 
-const server: http.Server = new http.Server(app)
+const server: http.Server = http.createServer(app)
 const socket = new Socket(server)
 
 server.listen(PORT)

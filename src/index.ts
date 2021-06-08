@@ -1,5 +1,6 @@
+require('dotenv').config()
 import * as http from 'http'
-import { DB_CONNECTION_STRING, PORT, USE_DB } from './var/config'
+import { DB, PORT } from './var/config'
 import { Socket } from './socket/index'
 import app from './server'
 
@@ -13,10 +14,10 @@ server.on('error', (e: Error) => {
 })
 
 server.on('listening', () => {
-  if (USE_DB) {
+  if (DB) {
     console.log(
       `Server started on port ${PORT} on env ${process.env.NODE_ENV ||
-        'dev'} dbcon ${DB_CONNECTION_STRING}`,
+        'dev'} dbcon ${DB}`,
     )
   } else {
     console.log(

@@ -5,12 +5,7 @@ import * as mongoose from 'mongoose'
 import * as logger from 'morgan'
 import * as path from 'path'
 
-import {
-  DB_CONNECTION_STRING,
-  ROUTES_DIR,
-  MODELS_DIR,
-  USE_DB,
-} from '../var/config'
+import { DB, MODELS_DIR, ROUTES_DIR } from '../var/config'
 import { globFiles } from '../helpers'
 
 const app: express.Express = express()
@@ -19,10 +14,15 @@ for (const model of globFiles(MODELS_DIR)) {
   require(path.resolve(model))
 }
 
-if (USE_DB) {
-  mongoose.connect(DB_CONNECTION_STRING).catch(() => {
-    console.log('Error connecting to mongo')
-  })
+if (DB) {
+  mongoose
+    .connect(DB, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .catch(e => {
+      console.log('Error connecting to mongo db', e.message)
+    })
 }
 
 app.set('views', path.join(__dirname, '../../src/views'))

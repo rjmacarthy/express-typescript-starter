@@ -4,8 +4,8 @@ import * as socket from 'socket.io'
 export class Socket {
   public io: socket.Server
 
-  constructor(http: Server) {
-    this.io = socket(http)
+  constructor(server: Server) {
+    this.io = socket(server)
     this.connect()
   }
 

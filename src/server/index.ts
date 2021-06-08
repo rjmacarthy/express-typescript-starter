@@ -1,12 +1,12 @@
 import * as bodyParser from 'body-parser'
 import * as cookieParser from 'cookie-parser'
 import * as express from 'express'
-import * as mongoose from 'mongoose'
 import * as logger from 'morgan'
 import * as path from 'path'
 
 import { DB, MODELS_DIR, ROUTES_DIR } from '../var/config'
 import { globFiles } from '../helpers'
+import connect from '../database'
 
 const app: express.Express = express()
 
@@ -14,16 +14,7 @@ for (const model of globFiles(MODELS_DIR)) {
   require(path.resolve(model))
 }
 
-if (DB) {
-  mongoose
-    .connect(DB, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
-    .catch(e => {
-      console.log('Error connecting to mongo db', e.message)
-    })
-}
+DB && connect(DB)
 
 app.set('views', path.join(__dirname, '../../src/views'))
 app.set('view engine', 'pug')

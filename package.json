@@ -1,6 +1,7 @@
 {
-  "name": "typescript-express",
+  "name": "express-typescript-starter",
   "version": "1.0.11",
+  "author": "rjmacarthy",
   "private": false,
   "scripts": {
     "dev": "npm run build && concurrently --kill-others \"tsc -w -p src\" \"nodemon dist/index.js -e ts\"",

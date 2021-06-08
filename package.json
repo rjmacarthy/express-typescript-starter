@@ -1,7 +1,7 @@
 {
   "name": "typescript-express",
   "version": "1.0.11",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "npm run build && concurrently --kill-others \"tsc -w -p src\" \"nodemon dist/index.js -e ts\"",
     "debug": "npm run build && concurrently --kill-others \"tsc -w -p src\" \"nodemon --inspect dist/index.js -e ts\"",

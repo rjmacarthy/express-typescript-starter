@@ -49,31 +49,43 @@ Browse to http://localhost:3000
 # Folder structure
 
 ```
-src/
-├── controllers
-│   └── index.server.controller.ts
-├── helpers
-│   └── index.ts
-├── index.ts
-├── models
-│   └── example.model.ts
-├── public
-│   ├── favicon.ico
-│   └── stylesheets
-│       └── style.css
-├── routes
-│   └── index.server.route.ts
-├── server
-│   └── index.ts
-├── socket
-│   └── index.ts
+├── docker-compose.yaml
+├── Dockerfile
+├── nodemon.json
+├── package.json
+├── package-lock.json
+├── README.md
+├── spec
+│   ├── index.spec.ts
+│   └── model.spec.ts
+├── src
+│   ├── controllers
+│   │   └── index.server.controller.ts
+│   ├── database
+│   │   └── index.ts
+│   ├── helpers
+│   │   └── index.ts
+│   ├── index.ts
+│   ├── models
+│   │   └── example.model.ts
+│   ├── public
+│   │   ├── favicon.ico
+│   │   └── stylesheets
+│   ├── routes
+│   │   └── index.server.route.ts
+│   ├── server
+│   │   └── index.ts
+│   ├── socket
+│   │   └── index.ts
+│   ├── tsconfig.json
+│   ├── var
+│   │   └── config.ts
+│   └── views
+│       ├── error.pug
+│       ├── index.pug
+│       └── layout.pug
 ├── tsconfig.json
-├── var
-│   └── config.ts
-└── views
-    ├── error.pug
-    ├── index.pug
-    └── layout.pug
+└── tslint.json
 ```
 
 # Docker

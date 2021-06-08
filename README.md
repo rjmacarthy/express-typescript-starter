@@ -94,7 +94,7 @@ Build the image `sudo docker build -t rjmacarthy/express-typescript-starter .`
 
 Run the image `docker-compose up`
 
-Open `http://localhost:8080`
+Open `http://localhost:3000`
 
 
 # License

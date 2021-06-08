@@ -1,5 +1,5 @@
 import * as sinon from 'sinon'
-import { expect, assert } from 'chai'
+import { expect } from 'chai'
 import * as mocks from 'node-mocks-http'
 import { indexController } from '../src/controllers/index.server.controller'
 

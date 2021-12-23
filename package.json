@@ -42,7 +42,7 @@
     "@types/express": "^4.17.12",
     "@types/lodash": "^4.14.170",
     "@types/mocha": "^5.2.0",
-    "@types/node": "^8.10.66",
+    "@types/node": "^17.0.4",
     "@types/sinon": "^4.3.3",
     "@types/socket.io": "^2.1.13",
     "chai": "^4.3.4",

@@ -3,18 +3,19 @@ import { assert } from 'chai'
 import { Example } from '../src/models/example.model'
 import { after } from 'mocha'
 import { DB } from '../src/var/config'
-// tslint:disable-next-line: no-require-imports
-const mongoose = require('mongoose')
+import { describe, it } from 'mocha'
+import * as mongoose from 'mongoose'
+
 
 describe('Model Spec', function() {
   let connectionString = DB
 
   beforeEach(() => {
+    // @ts-ignore
     delete mongoose.connection.models.Example
   })
 
   before(() => {
-    mongoose.Promise = global.Promise
     mongoose.connect(connectionString)
   })
 

@@ -2,6 +2,7 @@ import * as sinon from 'sinon'
 import { expect } from 'chai'
 import * as mocks from 'node-mocks-http'
 import { indexController } from '../src/controllers/index.server.controller'
+import { describe, it } from 'mocha'
 
 describe('Index Controller', function() {
   let res: mocks.MockResponse<any>

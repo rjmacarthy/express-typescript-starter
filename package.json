@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "npm run build && concurrently --kill-others \"tsc -w -p src\" \"nodemon dist/index.js -e ts\"",
     "debug": "npm run build && concurrently --kill-others \"tsc -w -p src\" \"nodemon --inspect dist/index.js -e ts\"",
-    "test:watch": "mocha -r ts-node/register -w ./spec/**/*.spec.ts --watch-extensions ts",
-    "test": "mocha -r ts-node/register -w ./spec/**/*.spec.ts",
+    "test:watch": "mocha -w ./spec/**/*.spec.ts --watch-extensions ts",
+    "test": "mocha -w ./spec/**/*.spec.ts",
     "build": "tsc -p src",
     "start": "node dist/index.js",
     "build:docker": "docker build -t rjmacarthy/express-typescript-starter .",

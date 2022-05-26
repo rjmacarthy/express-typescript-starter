@@ -1,23 +1,23 @@
 import { Server } from 'http'
-import * as socket from 'socket.io'
+import * as socketIo from 'socket.io'
 
 export class Socket {
-  public io: socket.Server
+  public io: socketIo.Server
 
   constructor(server: Server) {
-    this.io = socket(server)
+    this.io = new socketIo.Server(server)
     this.connect()
   }
 
   public connect() {
-    this.io.on('connection', (client: socket.Socket) => {
+    this.io.on('connection', (client: socketIo.Socket) => {
       // tslint:disable-next-line: no-console
       console.info(` connected : ${client.id}`)
       this.handlers(client)
     })
   }
 
-  public handlers(client: socket.Socket) {
+  public handlers(client: socketIo.Socket) {
     client.on('disconnect', () => {
       // tslint:disable-next-line: no-console
       console.info(`Socket disconnected : ${client.id}`)

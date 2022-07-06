@@ -16,13 +16,13 @@ server.on('error', (e: Error) => {
 server.on('listening', () => {
   if (DB) {
     console.log(
-      `Server started on port ${PORT} on env ${process.env.NODE_ENV ||
-        'dev'} dbcon ${DB}`,
+      `Server started on port ${PORT} on env ${
+        process.env.NODE_ENV || 'dev'
+      } dbcon ${DB}`
     )
   } else {
     console.log(
-      `Server started on port ${PORT} on env ${process.env.NODE_ENV ||
-        'dev'}`,
+      `Server started on port ${PORT} on env ${process.env.NODE_ENV || 'dev'}`
     )
   }
 })

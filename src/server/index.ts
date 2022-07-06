@@ -14,7 +14,9 @@ for (const model of globFiles(MODELS_DIR)) {
   require(path.resolve(model))
 }
 
-DB && connect(DB)
+if (DB) {
+  connect(DB)
+}
 
 app.set('views', path.join(__dirname, '../../src/views'))
 app.set('view engine', 'pug')

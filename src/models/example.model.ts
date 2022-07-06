@@ -18,5 +18,5 @@ export let ExampleSchema: Schema = new Schema({
 
 export const Example: Model<IExample> = model<IExample>(
   'Example',
-  ExampleSchema
+  ExampleSchema,
 )

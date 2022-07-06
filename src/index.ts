@@ -1,3 +1,4 @@
+/* tslint:disable-next-line */
 require('dotenv').config()
 import * as http from 'http'
 import { DB, PORT } from './var/config'
@@ -18,11 +19,11 @@ server.on('listening', () => {
     console.log(
       `Server started on port ${PORT} on env ${
         process.env.NODE_ENV || 'dev'
-      } dbcon ${DB}`
+      } dbcon ${DB}`,
     )
   } else {
     console.log(
-      `Server started on port ${PORT} on env ${process.env.NODE_ENV || 'dev'}`
+      `Server started on port ${PORT} on env ${process.env.NODE_ENV || 'dev'}`,
     )
   }
 })

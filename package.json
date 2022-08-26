@@ -28,7 +28,7 @@
     "glob": "^8.0.3",
     "lodash": "^4.17.21",
     "minimist": "^1.2.6",
-    "mongoose": "^6.3.4",
+    "mongoose": "^6.4.6",
     "morgan": "^1.10.0",
     "negotiator": "^0.6.3",
     "pug": "^3.0.2",

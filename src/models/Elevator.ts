@@ -33,7 +33,7 @@ export class Elevator {
     this.floor = floor;
   }
   public async moveToFloor(target: number, direction: Direction): Promise<void> {
-
+    // TODO:: This needs to be moved or implmented using Queue
     while (this.status === Status.Moving) {
       await sleep(VELOCITY_PER_FLOOR_SEC)
     }

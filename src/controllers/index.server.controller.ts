@@ -1,5 +1,7 @@
+import { Scheduler } from '../models/Scheduler';
 import { Request, Response } from 'express'
 import { Direction, Elevator } from '../models/Elevator'
+import { CustomEvaluator } from '../models/CustomEvaluator';
 
 
 
@@ -9,14 +11,17 @@ export default class IndexController {
     const e1 = new Elevator()
     const e2 = new Elevator()
 
-    e1.moveToFloor(8, Direction.Up);
-    e1.moveToFloor(2, Direction.Down);
+    const elevators = [e1, e2];
+
+    // e1.moveToFloor(8, Direction.Up);
+    // e1.moveToFloor(2, Direction.Down);
+
+    const evaluator = new CustomEvaluator();
+    const engine = new Scheduler(evaluator, elevators, 10);
+
 
     res.json({
-      ok: true, data: [
-        e1,
-        e2,
-      ]
+      ok: true, elevator: engine.whichElevator(1, 10)
     })
   }
 

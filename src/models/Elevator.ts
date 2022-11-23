@@ -13,11 +13,30 @@ export enum Direction {
 }
 
 const directionMap = {
+  [Direction.Standby]: "Standby",
   [Direction.Up]: "UP",
   [Direction.Down]: "DOWN",
 }
 
+const statusMap = {
+  [Status.Idle]: "Idle",
+  [Status.Faulty]: "Faulty",
+  [Status.Moving]: "Moving",
+}
+
+
 const sleep = async (ms: number): Promise<void> => await new Promise(f => setTimeout(f, ms));
+
+
+export interface IEvaluator {
+  evaluate(e: Elevator, from: number, to: number): number
+};
+
+export type ElevatorParams = {
+  proximity: number,
+  direction: number,
+  status: number,
+}
 
 export class Elevator {
   private static _id: number = 0;
@@ -53,5 +72,8 @@ export class Elevator {
       this.status = Status.Idle;
       console.info(`moveToFloor: Elevator finished move, status is Idle`);
     }
+  }
+  toJSON() {
+    return { ...this, status: statusMap[this.status], direction: directionMap[this.direction] };
   }
 }

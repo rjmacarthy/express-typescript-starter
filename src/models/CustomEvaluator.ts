@@ -1,9 +1,9 @@
-import { Elevator, IEvaluator, ElevatorParams, Direction } from './Elevator';
+import { Elevator, IEvaluator, EvaluatorParams, Direction, Status } from './Elevator';
 
 
 
-const defaultParams: ElevatorParams = {
-    proximity: 1,
+const defaultParams: EvaluatorParams = {
+    proximity: 10,
     direction: 200,
     status: 150,
 };
@@ -11,47 +11,46 @@ const defaultParams: ElevatorParams = {
 
 export class CustomEvaluator implements IEvaluator {
 
-    private params: ElevatorParams;
-    constructor(params: ElevatorParams = defaultParams) {
+    private params: EvaluatorParams;
+    constructor(params: EvaluatorParams = defaultParams) {
         this.params = params;
     };
-
-    evaluate(e: Elevator, from: number, to: number): number {
+    evaluate(e: Elevator, passengerFloor: number, passengerTarget: number): number {
         let result: number = 1;
         for (const [param, wight] of Object.entries(this.params)) {
 
             switch (param) {
                 case 'proximity':
-                    result *= Math.abs(from - e.floor);
+                    result += Math.abs(passengerFloor - e.floor) * wight;
                     break;
                 case 'direction':
 
                     const computeDirectionWight = () => {
-                        if (from > e.floor) {
+                        if (passengerFloor > e.floor) {
                             // passenger is above elevator.
 
-                            if (e.direction === Direction.Up) {
+                            if (e.direction === Direction.Up || e.direction === Direction.Standby) {
                                 // elevator is going up same direction of passenger
-                                result *= 1 * wight;
+                                result += 1 * wight;
                             } else {
                                 // elevator is going down in opposite direction of passenger
-                                result *= 2 * wight;
+                                result += 2 * wight;
                             }
 
                         } else {
                             // passenger is below elevator.
 
-                            if (e.direction === Direction.Down) {
+                            if (e.direction === Direction.Down || e.direction === Direction.Standby) {
                                 // elevator is going Down same direction of passenger
-                                result *= 1 * wight;
+                                result += 1 * wight;
                             } else {
                                 // elevator is going up in opposite direction of passenger
-                                result *= 2 * wight;
+                                result += 2 * wight;
                             }
                         }
                     }
 
-                    if (from < to) {
+                    if (passengerFloor < passengerTarget) {
                         // passenger going up
                         computeDirectionWight();
                     } else {
@@ -61,7 +60,17 @@ export class CustomEvaluator implements IEvaluator {
                     }
                     break;
                 case 'status':
-                    // TODO:: implements this.
+                    switch (e.status) {
+                        case Status.Idle:
+                            result += 1 * wight;
+                            break;
+                        case Status.Moving:
+                            result += 2 * wight;
+                            break;
+                        case Status.Faulty:
+                            result = Number.MAX_SAFE_INTEGER;
+                            break;
+                    }
                     break;
             }
         }

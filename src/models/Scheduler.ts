@@ -15,14 +15,14 @@ export class Scheduler {
     }
 
     public whichElevator(from: number, to: number): Elevator {
-        let maxEvaluation: number = Number.MIN_SAFE_INTEGER;
+        let minEvaluation: number = Number.MAX_SAFE_INTEGER;
         let target: Elevator = this.elevators[0];
 
         for (const elevator of this.elevators) {
             let elevatorEvaluation: number = this.evaluator.evaluate(elevator, from, to);
-
-            if (elevatorEvaluation > maxEvaluation) {
-                maxEvaluation = elevatorEvaluation;
+            console.log(elevator.id, elevatorEvaluation)
+            if (elevatorEvaluation < minEvaluation) {
+                minEvaluation = elevatorEvaluation;
                 target = elevator
             }
         }

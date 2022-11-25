@@ -32,7 +32,7 @@ export interface IEvaluator {
   evaluate(e: Elevator, from: number, to: number): number
 };
 
-export type ElevatorParams = {
+export type EvaluatorParams = {
   proximity: number,
   direction: number,
   status: number,

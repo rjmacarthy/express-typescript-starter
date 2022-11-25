@@ -1,15 +1,15 @@
 import { Scheduler } from '../models/Scheduler';
 import { Request, Response } from 'express'
-import { Direction, Elevator } from '../models/Elevator'
+import { Direction, Elevator, Status } from '../models/Elevator'
 import { CustomEvaluator } from '../models/CustomEvaluator';
 
 
 
 export default class IndexController {
   public async index(req: Request, res: Response, next: Function): Promise<void> {
-
-    const e1 = new Elevator()
-    const e2 = new Elevator()
+    // IDE, STANDBY, 1
+    const e1 = new Elevator(Status.Moving, Direction.Down, 9);
+    const e2 = new Elevator(Status.Moving, Direction.Down, 3);
 
     const elevators = [e1, e2];
 

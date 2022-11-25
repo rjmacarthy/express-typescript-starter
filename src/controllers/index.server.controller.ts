@@ -9,8 +9,8 @@ export default class IndexController {
   public async index(req: Request, res: Response, next: Function): Promise<void> {
     // IDE, STANDBY, 1
     const floors = 10;
-    const e1 = new Elevator(floors, Status.Idle);
-    const e2 = new Elevator(floors, Status.Idle);
+    const e1 = new Elevator(1);
+    const e2 = new Elevator(floors);
 
     const elevators = [e1, e2];
 
@@ -18,12 +18,15 @@ export default class IndexController {
     // e1.moveToFloor(2, Direction.Down);
 
     const evaluator = new CustomEvaluator();
-    const engine = new Scheduler(evaluator, elevators);
+    const engine = new Scheduler(evaluator, elevators, floors);
 
     engine.run();
 
     engine.requestMove(1, 8);
     engine.requestMove(1, 2);
+    engine.requestMove(10, 1);
+    engine.requestMove(2, 10);
+
 
     res.json({
       ok: true, elevator: engine.whichElevator(1, floors)

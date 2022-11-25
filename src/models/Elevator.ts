@@ -52,36 +52,14 @@ export class Elevator {
   status: Status
   direction: Direction
   floor: number
-  floors: number;
-  constructor(floors: number, status: Status = Status.Idle, direction: Direction = Direction.Standby, floor: number = 1) {
+
+  constructor(floor: number = 1) {
     this.id = ++Elevator._id;
-    this.status = status;
-    this.direction = direction;
+    this.status = Status.Idle;
+    this.direction = Direction.Standby;
     this.floor = floor;
-    this.floors = floors;
   }
-  public async moveToFloor(target: number, direction: Direction): Promise<void> {
-    // TODO:: This needs to be moved or implemented using Queue
-    while (this.status === Status.Moving) {
-      await sleep(VELOCITY_PER_FLOOR_SEC)
-    }
 
-    try {
-      console.info(`moveToFloor: Start moving to floor: ${target} Direction: ${directionMap[direction]}`);
-
-      this.status = Status.Moving;
-      this.direction = direction;
-
-      await sleep(VELOCITY_PER_FLOOR_SEC * Math.abs(target - this.floor));
-      this.floor = target;
-    } catch (error) {
-      this.status = Status.Faulty;
-      console.info(`moveToFloor: Elevator Failed to move`);
-    } finally {
-      this.status = Status.Idle;
-      console.info(`moveToFloor: Elevator finished move, status is Idle`);
-    }
-  }
   public askForMove(passengerFloor: number, passengerTarget: number) {
     console.info(`Elevator.askForMove: Elevator ${this.id} recived request to move from floor ${passengerFloor} to floor ${passengerTarget}`);
     // add to the elevator queue.
@@ -93,10 +71,10 @@ export class Elevator {
 
   private async move() {
     if (this._queue.length !== 0 && this.status === Status.Idle) {
-      await this.closeDoors();
-
       this.status = Status.Moving;
+      await this.closeDoors();
       const moveEvent: IElevatorEvent = this._queue[0];
+
       this.direction = this.floor < moveEvent.passengerTarget ? Direction.Up : Direction.Down;
       console.info(`Elevator.move: Elevator ${this.id} moving from ${this.floor} to ${moveEvent.passengerTarget} - Direction  ${directionMap[this.direction]} - Status is ${statusMap[this.status]} - current floor ${this.floor}`);
 
@@ -104,23 +82,23 @@ export class Elevator {
       this.floor = this._queue.shift().passengerTarget;
       await this.openDoors();
 
-      console.info(`Elevator.move: Elevator ${this.id} finished move from to ${moveEvent.passengerTarget} - Status is ${statusMap[this.status]} - current floor ${this.floor} `);
+      console.info(`Elevator.move: Elevator ${this.id} finished move to ${moveEvent.passengerTarget} - Status is ${statusMap[this.status]} - current floor ${this.floor} `);
 
     }
   }
 
   private async openDoors() {
     this.status = Status.Idle;
-    console.info(`Elevator.openDoors: Elevator ${this.id} opening doors - Status is ${this.status}`);
+    console.info(`Elevator.openDoors: Elevator ${this.id} opening doors - Status is ${statusMap[this.status]}`);
     await sleep(1000);
   }
 
   private async closeDoors() {
-    console.info(`Elevator.closeDoors: Elevator ${this.id} closing doors - Status is ${this.status}`);
+    console.info(`Elevator.closeDoors: Elevator ${this.id} closing doors - Status is ${statusMap[this.status]}`);
     await sleep(1000);
   }
   public run() {
-    this._interval = setInterval(() => this.move(), 1000);
+    this._interval = setInterval(() => this.move(), 500);
     console.info(`Elevator.run: Elevator ${this.id} is  running`);
   }
 

@@ -8,8 +8,9 @@ import { CustomEvaluator } from '../models/CustomEvaluator';
 export default class IndexController {
   public async index(req: Request, res: Response, next: Function): Promise<void> {
     // IDE, STANDBY, 1
-    const e1 = new Elevator(Status.Moving, Direction.Down, 9);
-    const e2 = new Elevator(Status.Moving, Direction.Down, 3);
+    const floors = 10;
+    const e1 = new Elevator(floors, Status.Idle);
+    const e2 = new Elevator(floors, Status.Idle);
 
     const elevators = [e1, e2];
 
@@ -17,11 +18,15 @@ export default class IndexController {
     // e1.moveToFloor(2, Direction.Down);
 
     const evaluator = new CustomEvaluator();
-    const engine = new Scheduler(evaluator, elevators, 10);
+    const engine = new Scheduler(evaluator, elevators);
 
+    engine.run();
+
+    engine.requestMove(1, 8);
+    engine.requestMove(1, 2);
 
     res.json({
-      ok: true, elevator: engine.whichElevator(1, 10)
+      ok: true, elevator: engine.whichElevator(1, floors)
     })
   }
 

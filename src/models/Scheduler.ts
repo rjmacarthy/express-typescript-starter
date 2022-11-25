@@ -4,23 +4,21 @@ import { Elevator, IEvaluator } from "./Elevator";
 export class Scheduler {
 
     private elevators: Elevator[];
-    private floors: number;
     private evaluator: IEvaluator;
-    private queue: [];
 
-    constructor(evaluator: IEvaluator, elevators: Elevator[], floors: number) {
+    constructor(evaluator: IEvaluator, elevators: Elevator[]) {
         this.evaluator = evaluator;
         this.elevators = elevators;
-        this.floors = floors;
     }
 
-    public whichElevator(from: number, to: number): Elevator {
+    public whichElevator(passengerFloor: number, passengerTarget: number): Elevator {
         let minEvaluation: number = Number.MAX_SAFE_INTEGER;
         let target: Elevator = this.elevators[0];
 
         for (const elevator of this.elevators) {
-            let elevatorEvaluation: number = this.evaluator.evaluate(elevator, from, to);
-            console.log(elevator.id, elevatorEvaluation)
+            let elevatorEvaluation: number = this.evaluator.evaluate(elevator, passengerFloor, passengerTarget);
+            console.info(`Scheduler.whichElevator: Elevator ${elevator.id} wight is ${elevatorEvaluation}`);
+
             if (elevatorEvaluation < minEvaluation) {
                 minEvaluation = elevatorEvaluation;
                 target = elevator
@@ -28,8 +26,23 @@ export class Scheduler {
         }
         return target;
     }
-    public request(from, to) {
-
+    public requestMove(passengerFloor: number, passengerTarget: number) {
+        // TODO:: add validation for movement.
+        const bestElevator = this.whichElevator(passengerFloor, passengerTarget);
+        console.info(`Scheduler.requestMove: Request to move from ${passengerFloor} to ${passengerTarget} using ${bestElevator.id}`);
+        bestElevator.askForMove(passengerFloor, passengerTarget);
+    }
+    public run() {
+        console.info(`Scheduler.run: running elevators ${this.elevators.length}}`);
+        for (const elevator of this.elevators) {
+            elevator.run();
+        }
+    }
+    public stop() {
+        console.info(`Scheduler.stop: Stopping elevators ${this.elevators.length}}`);
+        for (const elevator of this.elevators) {
+            elevator.stop();
+        }
     }
 
 }

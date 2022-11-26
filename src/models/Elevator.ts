@@ -61,7 +61,17 @@ export class Elevator {
   }
 
   public askForMove(passengerFloor: number, passengerTarget: number) {
-    console.info(`Elevator.askForMove: Elevator ${this.id} recived request to move from floor ${passengerFloor} to floor ${passengerTarget}`);
+    console.info(`Elevator.askForMove: Elevator ${this.id} received request to move from floor ${passengerFloor} to floor ${passengerTarget}`);
+    if (this.floor !== passengerFloor) {
+      // Note: if the elevator floor isn't at the passenger floor then ask to move to the passenger floor to pick up the elevator.
+
+      console.info(`Elevator.askForMove: Elevator ${this.id} should move to the passenger floor ${passengerFloor} to carry then move to the target floor ${passengerTarget}`);
+      this._queue.push({
+        passengerFloor: this.floor,
+        passengerTarget: passengerFloor,
+      });
+    }
+
     // add to the elevator queue.
     this._queue.push({
       passengerFloor,
@@ -71,9 +81,16 @@ export class Elevator {
 
   private async move() {
     if (this._queue.length !== 0 && this.status === Status.Idle) {
+      const moveEvent: IElevatorEvent = this._queue[0];
+
+      if (moveEvent.passengerTarget === this.floor) {
+        this._queue.shift();
+        await this.openDoors();
+        return;
+      };
+
       this.status = Status.Moving;
       await this.closeDoors();
-      const moveEvent: IElevatorEvent = this._queue[0];
 
       this.direction = this.floor < moveEvent.passengerTarget ? Direction.Up : Direction.Down;
       console.info(`Elevator.move: Elevator ${this.id} moving from ${this.floor} to ${moveEvent.passengerTarget} - Direction  ${directionMap[this.direction]} - Status is ${statusMap[this.status]} - current floor ${this.floor}`);
@@ -89,12 +106,12 @@ export class Elevator {
 
   private async openDoors() {
     this.status = Status.Idle;
-    console.info(`Elevator.openDoors: Elevator ${this.id} opening doors - Status is ${statusMap[this.status]}`);
+    console.info(`Elevator.openDoors: Elevator ${this.id} opening doors - Status is ${statusMap[this.status]} - current floor ${this.floor}`);
     await sleep(1000);
   }
 
   private async closeDoors() {
-    console.info(`Elevator.closeDoors: Elevator ${this.id} closing doors - Status is ${statusMap[this.status]}`);
+    console.info(`Elevator.closeDoors: Elevator ${this.id} closing doors - Status is ${statusMap[this.status]} - current floor ${this.floor} `);
     await sleep(1000);
   }
   public run() {

@@ -1,6 +1,6 @@
 import { Scheduler } from '../models/Scheduler';
 import { Request, Response } from 'express'
-import { Direction, Elevator, Status } from '../models/Elevator'
+import { Elevator } from '../models/Elevator'
 import { CustomEvaluator } from '../models/CustomEvaluator';
 
 
@@ -21,7 +21,6 @@ export default class IndexController {
     const engine = new Scheduler(evaluator, elevators, floors);
 
     engine.run();
-
     engine.requestMove(1, 8);
     engine.requestMove(1, 2);
     engine.requestMove(10, 1);

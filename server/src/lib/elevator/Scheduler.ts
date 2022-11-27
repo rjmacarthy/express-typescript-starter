@@ -1,3 +1,4 @@
+import _ = require("lodash");
 import { Elevator, IEvaluator } from "./Elevator";
 
 
@@ -6,7 +7,7 @@ export class Scheduler {
     private elevators: Elevator[];
     private evaluator: IEvaluator;
     private floors: number;
-
+    public status: string = "off";
     constructor(evaluator: IEvaluator, elevators: Elevator[], floors: number) {
         this.evaluator = evaluator;
         this.elevators = elevators;
@@ -39,25 +40,29 @@ export class Scheduler {
         bestElevator.askForMove(passengerFloor, passengerTarget);
     }
     public run() {
+        if (this.status === "on") return;
+
         console.info(`Scheduler.run: running elevators ${this.elevators.length}`);
         for (const elevator of this.elevators) {
             elevator.run();
         }
+        this.status = "on";
     }
     public stop() {
+        if (this.status === "off") return;
+
         console.info(`Scheduler.stop: Stopping elevators ${this.elevators.length}`);
         for (const elevator of this.elevators) {
             elevator.stop();
         }
+        this.status = "off";
+
     }
     public getStatus() {
         return {
             elevatorsCount: this.elevators.length,
             floors: this.floors,
-            statuses: this.elevators.reduce((acc, elevator) => {
-                acc[`elevator_${elevator.id}`] = elevator.getStatus();
-                return acc;
-            }, {})
+            statuses: this.elevators.map(elevator => elevator.getStatus())
         }
     }
 

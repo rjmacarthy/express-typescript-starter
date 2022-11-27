@@ -1,25 +1,26 @@
 import * as sinon from 'sinon'
 import { expect } from 'chai'
 import * as mocks from 'node-mocks-http'
-import { indexController } from '../src/controllers/index.server.controller'
+import { elevatorController } from '../src/controllers/elevator.controller'
 import { describe, it } from 'mocha'
 
-describe('Index Controller', function() {
+// TODO:: change the tests
+describe('Index Controller', function () {
   let res: mocks.MockResponse<any>
 
   beforeEach(() => {
     res = mocks.createResponse()
   })
 
-  it('Can render the index page', async function() {
+  it('Can render the index page', async function () {
     let req, spy
     spy = res.render = sinon.spy()
-    indexController.index(req, res, null)
+    elevatorController.which(req, res)
     expect(spy.calledOnce).to.equal(true)
   })
 
   it('Can get get json', () => {
-    indexController.msg(null, res)
+    elevatorController.index(null, res, null)
     const data = JSON.parse(res._getData())
     expect(data.msg).to.equal('Hello!')
   })

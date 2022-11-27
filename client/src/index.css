@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.site-card-wrapper {
+  padding: 15px;
+  background: #ececec;
+}
+
+[data-theme="dark"] .site-card-wrapper {
+  background: #303030;
+}

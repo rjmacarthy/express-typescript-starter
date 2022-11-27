@@ -2,6 +2,8 @@ import React from "react";
 import { HomeOutlined, PlusSquareOutlined } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BuildingList } from "./Building/list";
+import { BuildingCreate } from "./Building/create";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -19,10 +21,6 @@ const items = [
     title: "Create Buildings",
   },
 ];
-
-const handleNavigation = ({ item, key, keyPath, domEvent }) => {
-  console.log(item, key, keyPath, domEvent);
-};
 
 const App = () => (
   <Router>
@@ -43,7 +41,6 @@ const App = () => (
           mode="inline"
           defaultSelectedKeys={["4"]}
           items={items}
-          onClick={handleNavigation}
         />
       </Sider>
       <Layout
@@ -81,10 +78,10 @@ const App = () => (
           */}
             <Switch>
               <Route exact path="/building">
-                Bulding list
+                <BuildingList />
               </Route>
               <Route exact path="/building/create">
-                <h1>building/create</h1>
+                <BuildingCreate />
               </Route>
             </Switch>
           </div>

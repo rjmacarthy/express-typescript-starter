@@ -20,9 +20,13 @@ export class BuildingService {
           this._scheduler.requestMove(10, 1);
           this._scheduler.requestMove(2, 10);
      }
-     public whichElevator(passengerFloor, passengerTarget) {
+     public whichElevator(passengerFloor: number, passengerTarget: number) {
           return this._scheduler.whichElevator(passengerFloor, passengerTarget)
      }
+     public requestMove(passengerFloor: number, passengerTarget: number) {
+          this._scheduler.requestMove(passengerFloor, passengerTarget);
+     }
+
      public status() {
           return this._scheduler.getStatus();
      }

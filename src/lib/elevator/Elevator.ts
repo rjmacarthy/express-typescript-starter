@@ -123,8 +123,8 @@ export class Elevator {
     if (this._interval) clearInterval(this._interval);
     console.info(`Elevator.stop: Elevator ${this.id} stopped`)
   }
-  public getStatus(): string {
-    return statusMap[this.status];
+  public getStatus(): any {
+    return JSON.parse(JSON.stringify(this));
   }
   public toJSON() {
     const { _queue, _interval, ...readProperties } = this;

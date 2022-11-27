@@ -45,7 +45,28 @@ export default class ElevatorController {
 
     try {
       const elevator = _buildingService.whichElevator(Number(from), Number(to));
-      return res.json({ msg: 'Hello!', params: { from, to }, elevator })
+      return res.json({ ok: true, elevator })
+
+    } catch (error) {
+      console.error("ElevatorController.which: failure occurs", error);
+      return res.status(500).send({ error: "Something went wrong" });
+    }
+
+  }
+  public movePassenger(req: Request, res: Response): Response<any> {
+
+    const { from, to } = req.query;
+
+    if (!from || !to) {
+      return res.status(400).json({
+        ok: false,
+        message: '[from, to] query params is required',
+      });
+    }
+
+    try {
+      _buildingService.requestMove(Number(from), Number(to));
+      return res.json({ ok: true });
 
     } catch (error) {
       console.error("ElevatorController.which: failure occurs", error);

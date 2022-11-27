@@ -1,25 +1,103 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { HomeOutlined, PlusSquareOutlined } from "@ant-design/icons";
+import { Layout, Menu } from "antd";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+const { Header, Content, Footer, Sider } = Layout;
+
+const items = [
+  {
+    key: 1,
+    icon: <HomeOutlined />,
+    label: <Link to="/building"> Buildings</Link>,
+    title: "Buildings",
+  },
+  {
+    key: 2,
+    icon: <PlusSquareOutlined />,
+    label: <Link to="/building/create"> Create Building</Link>,
+    title: "Create Buildings",
+  },
+];
+
+const handleNavigation = ({ item, key, keyPath, domEvent }) => {
+  console.log(item, key, keyPath, domEvent);
+};
+
+const App = () => (
+  <Router>
+    <Layout hasSider>
+      <Sider
+        style={{
+          overflow: "auto",
+          height: "100vh",
+          position: "fixed",
+          left: 0,
+          top: 0,
+          bottom: 0,
+        }}
+      >
+        <div className="logo" />
+        <Menu
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={["4"]}
+          items={items}
+          onClick={handleNavigation}
+        />
+      </Sider>
+      <Layout
+        className="site-layout"
+        style={{
+          marginLeft: 200,
+        }}
+      >
+        <Header
+          className="site-layout-background"
+          style={{
+            padding: 0,
+          }}
+        />
+        <Content
+          style={{
+            margin: "24px 16px 0",
+            overflow: "initial",
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
+          <div
+            className="site-layout-background"
+            style={{
+              padding: 24,
+              textAlign: "center",
+              height: "100vh",
+            }}
+          >
+            {/*
+            A <Switch> looks through all its children <Route>
+            elements and renders the first one whose path
+            matches the current URL. Use a <Switch> any time
+            you have multiple routes, but you want only one
+            of them to render at a time
+          */}
+            <Switch>
+              <Route exact path="/building">
+                Bulding list
+              </Route>
+              <Route exact path="/building/create">
+                <h1>building/create</h1>
+              </Route>
+            </Switch>
+          </div>
+        </Content>
+        <Footer
+          style={{
+            textAlign: "center",
+          }}
+        >
+          Ant Design ©2018 Created by Ant UED
+        </Footer>
+      </Layout>
+    </Layout>
+  </Router>
+);
 export default App;

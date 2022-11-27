@@ -50,5 +50,19 @@ export class Scheduler {
             elevator.stop();
         }
     }
+    public getStatus() {
+        return {
+            elevatorsCount: this.elevators.length,
+            floors: this.floors,
+            statuses: this.elevators.reduce((acc, elevator) => {
+                acc[`elevator_${elevator.id}`] = {
+                    id: elevator.id,
+                    status: elevator.getStatus()
+                };
+                return acc;
+            }, {})
+        }
+    }
+
 
 }

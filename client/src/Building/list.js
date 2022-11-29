@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { getBuildings } from "../api";
-import { Card, Col, Row } from "antd";
+import { Card, Col, Row, Typography } from "antd";
+import { Link } from "react-router-dom";
+
 import { sliceIntoChunks } from "../utils";
+import { ROUTES } from "../constant";
+const { Title } = Typography;
 
 export const BuildingList = () => {
   const [buildingList, setBuildingList] = useState([]);
@@ -18,7 +22,7 @@ export const BuildingList = () => {
   }, []);
 
   const buildingChunks = sliceIntoChunks(buildingList, 3);
-  return (
+  return buildingChunks.length ? (
     <>
       {buildingChunks.map((group, idx) => (
         <div className="site-card-wrapper">
@@ -36,6 +40,11 @@ export const BuildingList = () => {
           </Row>
         </div>
       ))}
+    </>
+  ) : (
+    <>
+      <Title>No Buildings available </Title>
+      <Link to={ROUTES.BULGING.create}>Add new building configuration</Link>
     </>
   );
 };

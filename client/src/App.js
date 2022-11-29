@@ -4,6 +4,7 @@ import { Layout, Menu } from "antd";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { BuildingList } from "./Building/list";
 import { BuildingCreate } from "./Building/create";
+import { ROUTES } from "./constant";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -11,13 +12,13 @@ const items = [
   {
     key: 1,
     icon: <HomeOutlined />,
-    label: <Link to="/building"> Buildings</Link>,
+    label: <Link to={ROUTES.BULGING.list}> Buildings</Link>,
     title: "Buildings",
   },
   {
     key: 2,
     icon: <PlusSquareOutlined />,
-    label: <Link to="/building/create"> Create Building</Link>,
+    label: <Link to={ROUTES.BULGING.create}> Create Building</Link>,
     title: "Create Buildings",
   },
 ];
@@ -77,10 +78,10 @@ const App = () => (
             of them to render at a time
           */}
             <Switch>
-              <Route exact path="/building">
+              <Route exact path={ROUTES.BULGING.list}>
                 <BuildingList />
               </Route>
-              <Route exact path="/building/create">
+              <Route exact path={ROUTES.BULGING.create}>
                 <BuildingCreate />
               </Route>
             </Switch>

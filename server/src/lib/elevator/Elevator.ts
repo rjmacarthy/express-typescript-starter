@@ -127,7 +127,7 @@ export class Elevator {
     return JSON.parse(JSON.stringify(this));
   }
   public toJSON() {
-    const { _queue, _interval, ...readProperties } = this;
-    return { ...readProperties, status: statusMap[this.status], direction: directionMap[this.direction], };
+    const { _queue: pendingRequests, _interval, ...readProperties } = this;
+    return { ...readProperties, status: statusMap[this.status], direction: directionMap[this.direction], pendingRequests };
   }
 }

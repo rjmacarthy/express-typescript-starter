@@ -8,6 +8,9 @@ export default class IndexRoute {
     app.post('/building/', buildingController.post)
     app.post('/building/:id/start', buildingController.start)
     app.post('/building/:id/stop', buildingController.stop)
+    app.post('/building/:id/simulation', buildingController.startSimulation)
+
+
 
     app.get('/building/', buildingController.index)
     app.get('/building/:id', buildingController.get)

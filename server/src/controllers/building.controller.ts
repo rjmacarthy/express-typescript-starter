@@ -142,6 +142,21 @@ export default class BuildingController {
     building.stop();
     return res.json({ ok: true });
   }
+  public startSimulation(req: Request, res: Response): Response<any> {
+    const { id } = req.params;
+
+    const building: BuildingService = _buildings.find(building => building.id === Number(id));
+    if (!building) {
+      return res.status(404).json({
+        ok: false,
+        message: 'Building not found',
+      })
+    }
+
+    // TODO:: call start simulation
+    return res.json({ ok: true });
+  }
+
 }
 
 export const buildingController = new BuildingController();

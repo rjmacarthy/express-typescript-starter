@@ -43,7 +43,7 @@ export const BuildingView = () => {
       ) : (
         <div>
           <Title>Building Configurator</Title>
-          <Descriptions title="Building Info">
+          <Descriptions title="Details">
             <Descriptions.Item label="ID">{building.id}</Descriptions.Item>
             <Descriptions.Item label="# Elevators">
               {building.elevatorsCount}
@@ -54,6 +54,7 @@ export const BuildingView = () => {
           <List
             itemLayout="vertical"
             bordered
+            size="large"
             dataSource={building.statuses || []}
             renderItem={(item, idx) => (
               <List.Item key={item.id}>

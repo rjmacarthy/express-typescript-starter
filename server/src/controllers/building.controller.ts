@@ -80,9 +80,9 @@ export default class BuildingController {
     }
 
     if (building.getStatus() === "off") {
-      return res.status(404).json({
+      return res.status(400).json({
         ok: false,
-        message: 'The building is off',
+        message: 'The building is off, Please make sure it"s on',
       })
     }
 

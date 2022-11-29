@@ -16,16 +16,16 @@ export const whichElevator = async (buildingId, from, to) => {
   const response = await fetch(
     `${BASE_URL}/building/${buildingId}/which?from=${from}&to=${to}`
   );
-  const buildings = await response.json();
-  return buildings;
+  const elevator = await response.json();
+  return elevator;
 };
 
 export const movePassenger = async (buildingId, from, to) => {
   const response = await fetch(
     `${BASE_URL}/building/${buildingId}/movePassenger?from=${from}&to=${to}`
   );
-  const buildings = await response.json();
-  return buildings;
+  const responseJSON = await response.json();
+  return responseJSON;
 };
 
 export const startElevators = async (buildingId) => {

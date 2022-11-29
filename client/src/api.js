@@ -1,10 +1,73 @@
-const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "//localhost:3000";
 
 export const getBuildings = async () => {
   const response = await fetch(`${BASE_URL}/building`);
   const buildings = await response.json();
-  console.log(buildings);
   return buildings;
+};
+
+export const getBuilding = async (buildingId) => {
+  const response = await fetch(`${BASE_URL}/building/${buildingId}`);
+  const buildings = await response.json();
+  return buildings;
+};
+
+export const whichElevator = async (buildingId, from, to) => {
+  const response = await fetch(
+    `${BASE_URL}/building/${buildingId}/which?from=${from}&to=${to}`
+  );
+  const buildings = await response.json();
+  return buildings;
+};
+
+export const movePassenger = async (buildingId, from, to) => {
+  const response = await fetch(
+    `${BASE_URL}/building/${buildingId}/movePassenger?from=${from}&to=${to}`
+  );
+  const buildings = await response.json();
+  return buildings;
+};
+
+export const startElevators = async (buildingId) => {
+  const response = await fetch(`${BASE_URL}/building/${buildingId}/start`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const responseJSON = await response.json();
+
+  return responseJSON;
+};
+
+export const stopElevators = async (buildingId) => {
+  const response = await fetch(`${BASE_URL}/building/${buildingId}/stop`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const responseJSON = await response.json();
+
+  return responseJSON;
+};
+
+export const startSimulation = async (buildingId) => {
+  const response = await fetch(
+    `${BASE_URL}/building/${buildingId}/simulation`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  const responseJSON = await response.json();
+
+  return responseJSON;
 };
 
 export const createBuilding = async (payload) => {

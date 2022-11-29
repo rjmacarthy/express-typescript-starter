@@ -1,23 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form, Input, message } from "antd";
 import { createBuilding } from "../api";
+import { ROUTES } from "../constant";
+import { useHistory } from "react-router-dom";
 
 export const BuildingCreate = () => {
-  const [messageApi, contextHolder] = message.useMessage();
+  const [isProcessing, setIsProcessing] = useState(false);
+  const history = useHistory();
 
   const handleSubmit = async (values) => {
     try {
-      await createBuilding(values);
-      messageApi.open({
-        type: "success",
-        content: "New building configuration has been created",
+      setIsProcessing(true);
+
+      const { building } = await createBuilding(values);
+      message.success("New building configuration has been created", 2, () => {
+        history.push(`${ROUTES.BULGING.list}/${building.id}`);
       });
     } catch (error) {
-      console.log(error);
-      messageApi.open({
-        type: "error",
-        content: "Cannot create new building, please try again",
-      });
+      message.error("Cannot create new building, please try again", 2);
+    } finally {
+      setIsProcessing(false);
     }
   };
   const [form] = Form.useForm();
@@ -62,11 +64,10 @@ export const BuildingCreate = () => {
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button loading={isProcessing} type="primary" htmlType="submit">
           Add new building
         </Button>
       </Form.Item>
-      {contextHolder}
     </Form>
   );
 };

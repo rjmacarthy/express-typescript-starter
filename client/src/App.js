@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { BuildingList } from "./Building/list";
 import { BuildingCreate } from "./Building/create";
 import { ROUTES } from "./constant";
+import { BuildingView } from "./Building/view";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -83,6 +84,9 @@ const App = () => (
               </Route>
               <Route exact path={ROUTES.BULGING.create}>
                 <BuildingCreate />
+              </Route>
+              <Route exact path={ROUTES.BULGING.view}>
+                <BuildingView />
               </Route>
             </Switch>
           </div>

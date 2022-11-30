@@ -6,7 +6,7 @@ export class Scheduler {
 
     private elevators: Elevator[];
     private evaluator: IEvaluator;
-    private floors: number;
+    public floors: number;
     public status: string = "off";
     constructor(evaluator: IEvaluator, elevators: Elevator[], floors: number) {
         this.evaluator = evaluator;

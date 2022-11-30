@@ -153,7 +153,8 @@ export default class BuildingController {
       })
     }
 
-    // TODO:: call start simulation
+    building.runSimulation();
+
     return res.json({ ok: true });
   }
 

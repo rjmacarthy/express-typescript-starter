@@ -14,11 +14,22 @@ export class BuildingService {
      }
 
      public runSimulation() {
-          // TODO:: add random simulation
-          this._scheduler.requestMove(1, 8);
-          this._scheduler.requestMove(1, 2);
-          this._scheduler.requestMove(10, 1);
-          this._scheduler.requestMove(2, 10);
+          const SIMULATION_REQUEST_INTERVAL = 5 * 1000; // 5 seconds
+          const SIMULATION_TIMEOUT = 2 * 60 * 1000; // 2 minutes
+
+          const _this = this;
+          const buildingFloors: number = _this._scheduler.floors;
+
+          const simulationId = setInterval(() => {
+               _this._scheduler.requestMove(Math.floor(Math.random() * buildingFloors) + 1, Math.floor(Math.random() * buildingFloors) + 1);
+
+          }, SIMULATION_REQUEST_INTERVAL);
+
+
+          setTimeout(() => {
+               clearInterval(simulationId);
+          }, SIMULATION_TIMEOUT);
+
      }
      public whichElevator(passengerFloor: number, passengerTarget: number) {
           return this._scheduler.whichElevator(passengerFloor, passengerTarget)

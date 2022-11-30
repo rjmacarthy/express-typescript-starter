@@ -152,7 +152,7 @@ export default class BuildingController {
         message: 'Building not found',
       })
     }
-
+    building.start();
     building.runSimulation();
 
     return res.json({ ok: true });

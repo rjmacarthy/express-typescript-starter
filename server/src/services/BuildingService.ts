@@ -14,6 +14,7 @@ export class BuildingService {
      }
 
      public runSimulation() {
+          console.log("BuildingService.simulation: Started");
           const SIMULATION_REQUEST_INTERVAL = 5 * 1000; // 5 seconds
           const SIMULATION_TIMEOUT = 2 * 60 * 1000; // 2 minutes
 
@@ -28,6 +29,7 @@ export class BuildingService {
 
           setTimeout(() => {
                clearInterval(simulationId);
+               console.log("BuildingService.simulation: Ended");
           }, SIMULATION_TIMEOUT);
 
      }

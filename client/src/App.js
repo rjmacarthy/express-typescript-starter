@@ -68,7 +68,7 @@ const App = () => (
             style={{
               padding: 24,
               textAlign: "center",
-              height: "100vh",
+              minHeight: "100vh",
             }}
           >
             {/*
@@ -91,13 +91,6 @@ const App = () => (
             </Switch>
           </div>
         </Content>
-        <Footer
-          style={{
-            textAlign: "center",
-          }}
-        >
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
       </Layout>
     </Layout>
   </Router>

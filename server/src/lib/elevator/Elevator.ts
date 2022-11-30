@@ -1,5 +1,5 @@
 
-const VELOCITY_PER_FLOOR_SEC = 2 * 1000;
+const VELOCITY_PER_FLOOR_SEC = 1 * 1000;
 
 export enum Status {
   Idle = 0,
@@ -106,6 +106,7 @@ export class Elevator {
 
   private async openDoors() {
     this.status = Status.Idle;
+    this.direction = Direction.Standby;
     console.info(`Elevator.openDoors: Elevator ${this.id} opening doors - Status is ${statusMap[this.status]} - current floor ${this.floor}`);
     await sleep(1000);
   }

@@ -18,12 +18,26 @@ import {
   Button,
   Select,
   message,
+  Table,
 } from "antd";
 
 import { Loader } from "../component/Loader";
 import { useForm } from "antd/es/form/Form";
 
 const { Title } = Typography;
+
+const columns = [
+  {
+    title: "From",
+    dataIndex: "passengerFloor",
+    key: "passengerFloor",
+  },
+  {
+    title: "To",
+    dataIndex: "passengerTarget",
+    key: "passengerTarget",
+  },
+];
 
 export const BuildingView = () => {
   const [isFetching, setIsFetching] = useState(true);
@@ -219,7 +233,6 @@ export const BuildingView = () => {
           <List
             itemLayout="vertical"
             bordered
-            size="large"
             dataSource={building.statuses || []}
             renderItem={(item, idx) => (
               <List.Item key={item.id}>
@@ -234,6 +247,16 @@ export const BuildingView = () => {
                 </div>
                 <div>
                   <strong>Status: {item.status}</strong>
+                </div>
+                <Divider orientation="left">Pending Requests</Divider>
+
+                <div>
+                  {Boolean(item.pendingRequests.length) && (
+                    <Table
+                      dataSource={item.pendingRequests}
+                      columns={columns}
+                    />
+                  )}
                 </div>
               </List.Item>
             )}

@@ -5,6 +5,7 @@ import {
   getBuilding,
   movePassenger,
   startElevators,
+  startSimulation,
   stopElevators,
   whichElevator,
 } from "../api";
@@ -79,6 +80,15 @@ export const BuildingView = () => {
     try {
       const response = await stopElevators(id);
       if (response.ok) message.success(`Building Elevator is Off`, 1);
+    } catch (error) {
+      message.error(`Something went wrong. please try again later`);
+    }
+  };
+
+  const handleSimulation = async () => {
+    try {
+      const response = await startSimulation(id);
+      if (response.ok) message.success(`Simulation started`, 1);
     } catch (error) {
       message.error(`Something went wrong. please try again later`);
     }
@@ -191,6 +201,16 @@ export const BuildingView = () => {
                 onClick={handleStopElevators}
               >
                 Stop Elevators
+              </Button>
+            </Form.Item>
+
+            <Form.Item>
+              <Button
+                type="primary"
+                htmlType="submit"
+                onClick={handleSimulation}
+              >
+                Start Simulation
               </Button>
             </Form.Item>
           </Form>

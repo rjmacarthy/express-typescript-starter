@@ -27,9 +27,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '../../src/public')))
 
-for (const route of globFiles(ROUTES_DIR)) {
-  const Route = require(path.resolve(route))
-  new Route.default(app)
+const routes = globFiles(ROUTES_DIR);
+
+for (const route of routes) {
+  const Router = require(path.resolve(route));
+  const { default: router } = Router;
+  router.register(app);
 }
 
 export default app

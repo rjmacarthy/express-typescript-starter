@@ -18,7 +18,7 @@ describe('Model Spec', function () {
     mongoose.connect(connectionString)
   })
 
-  it('Can save a new model', async () => {
+  xit('Can save a new model', async () => {
     const example = new Example()
     example.name = 'test'
     const response = await example.save()

@@ -4,14 +4,14 @@ import * as mocks from 'node-mocks-http'
 import { indexController } from '../src/controllers/index.server.controller'
 import { describe, it } from 'mocha'
 
-describe('Index Controller', function() {
+describe('Index Controller', function () {
   let res: mocks.MockResponse<any>
 
   beforeEach(() => {
     res = mocks.createResponse()
   })
 
-  it('Can render the index page', async function() {
+  it('Can render the index page', async function () {
     let req, spy
     spy = res.render = sinon.spy()
     indexController.index(req, res, null)

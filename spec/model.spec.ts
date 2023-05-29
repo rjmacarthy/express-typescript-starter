@@ -6,8 +6,7 @@ import { DB } from '../src/var/config'
 import { describe, it } from 'mocha'
 import * as mongoose from 'mongoose'
 
-
-describe('Model Spec', function() {
+describe('Model Spec', function () {
   let connectionString = DB
 
   beforeEach(() => {

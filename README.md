@@ -1,6 +1,9 @@
 Typescript and Express.js 
 =========================
 
+![Build Status](https://github.com/rjmacarthy/express-typescript-starter/actions/workflows/main.yml/badge.svg)
+
+
 An Express.js project implemented using Typescript with strongly typed objects:
 
 # Installation

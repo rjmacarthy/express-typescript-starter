@@ -1,4 +1,4 @@
-FROM node:14.17.0
+FROM node:16.20.0
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY . /usr/src/app

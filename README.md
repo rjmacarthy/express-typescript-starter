@@ -90,7 +90,7 @@ Browse to http://localhost:3000
 
 # Docker
 
-Build the image `sudo docker build -t rjmacarthy/express-typescript-starter .`
+Build the image `docker build -t rjmacarthy/express-typescript-starter .`
 
 Run the image `docker-compose up`
 

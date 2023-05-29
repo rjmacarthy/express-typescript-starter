@@ -28,7 +28,8 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '../../src/public')))
 
 for (const route of globFiles(ROUTES_DIR)) {
-  require(path.resolve(route)).default(app)
+  const Route = require(path.resolve(route))
+  new Route.default(app)
 }
 
 export default app

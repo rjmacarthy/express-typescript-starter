@@ -14,7 +14,7 @@ describe('Index Controller', function () {
   it('Can render the index page', async function () {
     let req, spy
     spy = res.render = sinon.spy()
-    indexController.index(req, res, null)
+    indexController.index(req, res)
     expect(spy.calledOnce).to.equal(true)
   })
 

@@ -1,7 +1,9 @@
 import * as mongoose from 'mongoose'
 
-export default (connectionString: string) => {
-  mongoose.connect(connectionString).catch((e) => {
+export default (uri: string) => {
+  try {
+    mongoose.connect(uri)
+  } catch (e) {
     console.log('Error connecting to mongo db', e.message)
-  })
+  }
 }

@@ -30,9 +30,8 @@ app.use(express.static(path.join(__dirname, '../../src/public')))
 const routes = globFiles(ROUTES_DIR)
 
 for (const route of routes) {
-  const Router = require(path.resolve(route))
-  const { default: router } = Router
-  router.register(app)
+  const { default: Route } = require(path.resolve(route))
+  new Route(app)
 }
 
 export default app
